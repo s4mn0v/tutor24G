@@ -1,4 +1,4 @@
-import { theme } from "#tailwind-config";
+import { defineNuxtConfig } from 'nuxt/config';
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
@@ -59,10 +59,6 @@ export default defineNuxtConfig({
         },
       ],
     },
-  },
-  colorMode: {
-    preference: "system",
-    fallback: "light",
   },
   // Optimizaciones de vite
   vite: {
@@ -128,10 +124,5 @@ export default defineNuxtConfig({
   // Configuración adicional para Gemini
   build: {
     transpile: ["@google/generative-ai", "cookie"],
-  },
-  tailwindcss: {
-    configPath: "~/tailwind.config.ts",
-    exposeConfig: false, // Desactivar si no se necesita
-    viewer: false, // Desactivar en producción
   },
 });
