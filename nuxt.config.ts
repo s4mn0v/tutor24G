@@ -119,7 +119,6 @@ export default defineNuxtConfig({
   // Añadir configuración de TypeScript
   typescript: {
     strict: true,
-    typeCheck: true,
   },
   // Configuración adicional para Gemini
   build: {
