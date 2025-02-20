@@ -1,4 +1,4 @@
-import { defineNuxtConfig } from 'nuxt/config';
+import { defineNuxtConfig } from "nuxt/config";
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
@@ -114,6 +114,9 @@ export default defineNuxtConfig({
       },
       // Student
       "/api/news": { swr: 1800 },
+    },
+    externals: {
+      inline: ["unenv/runtime"],
     },
   },
   // Añadir configuración de TypeScript
