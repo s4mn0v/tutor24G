@@ -116,8 +116,16 @@ export default defineNuxtConfig({
       "/api/news": { swr: 1800 },
     },
     externals: {
-      inline: ["unenv/runtime"],
+      inline: ["unenv/runtime", "stream"],
     },
+    rollupConfig: {
+      external: ["unenv/runtime", "stream"],
+      output: {
+        generatedCode: {
+          symbols: true,
+        }
+      }
+    }
   },
   // Añadir configuración de TypeScript
   typescript: {
@@ -127,4 +135,7 @@ export default defineNuxtConfig({
   build: {
     transpile: ["@google/generative-ai", "cookie"],
   },
+  alias: {
+    'string_decoder': 'string_decoder/',
+  }
 });
