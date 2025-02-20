@@ -116,7 +116,7 @@ export default defineNuxtConfig({
       "/api/news": { swr: 1800 },
     },
     externals: {
-      inline: ["unenv/runtime", "stream"],
+      inline: ["unenv/runtime", "stream", "mock-aws-s3", "@mapbox/node-pre-gyp"],
     },
     rollupConfig: {
       external: ["unenv/runtime", "stream"],
@@ -133,9 +133,10 @@ export default defineNuxtConfig({
   },
   // Configuración adicional para Gemini
   build: {
-    transpile: ["@google/generative-ai", "cookie"],
+    transpile: ["@google/generative-ai", "cookie", "@prisma/client"],
   },
   alias: {
     'string_decoder': 'string_decoder/',
+    '.prisma/client/index-browser': 'node_modules/.prisma/client/index-browser.js',
   }
 });
