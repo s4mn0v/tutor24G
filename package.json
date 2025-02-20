@@ -18,6 +18,7 @@
     "@google/generative-ai": "^0.21.0",
     "@iconify-json/heroicons": "^1.2.2",
     "@nuxt/ui": "^2.21.0",
+    "@nuxthub/core": "^0.8.17",
     "@nuxtjs/supabase": "^1.4.6",
     "@prisma/client": "^6.4.0",
     "@prisma/nuxt": "^0.2.0",
@@ -70,6 +71,7 @@
     "postcss": "^8.4.49",
     "prisma": "^6.2.1",
     "tailwindcss": "^3.4.17",
-    "vue-tsc": "^2.1.10"
+    "vue-tsc": "^2.1.10",
+    "wrangler": "^3.109.2"
   }
 }

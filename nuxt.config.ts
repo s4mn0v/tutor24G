@@ -7,29 +7,25 @@ export default defineNuxtConfig({
   },
   ssr: false,
   css: ["~/assets/css/main.css"],
-  modules: [
-    [
-      "@prisma/nuxt",
-      {
-        studio: false, // Desactivar Prisma Studio en desarrollo
-        client: {
-          // Configuración optimizada
-          autoRegister: false,
-          prismaPath: "node_modules/.prisma/client",
-        },
+  modules: [[
+    "@prisma/nuxt",
+    {
+      studio: false, // Desactivar Prisma Studio en desarrollo
+      client: {
+        // Configuración optimizada
+        autoRegister: false,
+        prismaPath: "node_modules/.prisma/client",
       },
-    ],
-    [
-      "@nuxt/ui",
-      {
-        global: true,
-        icons: ["heroicons"],
-        safelist: [], // Limitar clases generadas
-        prefix: "U", // Mejorar tree-shaking
-      },
-    ],
-    "@nuxtjs/tailwindcss",
-  ],
+    },
+  ], [
+    "@nuxt/ui",
+    {
+      global: true,
+      icons: ["heroicons"],
+      safelist: [], // Limitar clases generadas
+      prefix: "U", // Mejorar tree-shaking
+    },
+  ], "@nuxtjs/tailwindcss", "@nuxthub/core"],
   components: [
     {
       path: "~/components",
