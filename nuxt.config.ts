@@ -116,7 +116,7 @@ export default defineNuxtConfig({
       "/api/news": { swr: 1800 },
     },
     externals: {
-      inline: ["unenv/runtime", "stream", "mock-aws-s3", "@mapbox/node-pre-gyp"],
+      inline: ["unenv/runtime", "stream", "mock-aws-s3", "@mapbox/node-pre-gyp", "aws-sdk", "sharp"],
     },
     rollupConfig: {
       external: ["unenv/runtime", "stream"],
