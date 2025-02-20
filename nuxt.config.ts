@@ -133,7 +133,7 @@ export default defineNuxtConfig({
   },
   // Configuración adicional para Gemini
   build: {
-    transpile: ["@google/generative-ai", "cookie", "@prisma/client"],
+    transpile: ["@google/generative-ai", "cookie", "@prisma/client", "@mapbox/node-pre-gyp", "aws-sdk"],
   },
   alias: {
     'string_decoder': 'string_decoder/',
