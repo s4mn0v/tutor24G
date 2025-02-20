@@ -7,25 +7,30 @@ export default defineNuxtConfig({
   },
   ssr: false,
   css: ["~/assets/css/main.css"],
-  modules: [[
-    "@prisma/nuxt",
-    {
-      studio: false, // Desactivar Prisma Studio en desarrollo
-      client: {
-        // Configuración optimizada
-        autoRegister: false,
-        prismaPath: "node_modules/.prisma/client",
+  modules: [
+    [
+      "@prisma/nuxt",
+      {
+        studio: false, // Desactivar Prisma Studio en desarrollo
+        client: {
+          // Configuración optimizada
+          autoRegister: false,
+          prismaPath: "node_modules/.prisma/client",
+        },
       },
-    },
-  ], [
-    "@nuxt/ui",
-    {
-      global: true,
-      icons: ["heroicons"],
-      safelist: [], // Limitar clases generadas
-      prefix: "U", // Mejorar tree-shaking
-    },
-  ], "@nuxtjs/tailwindcss", "@nuxthub/core"],
+    ],
+    [
+      "@nuxt/ui",
+      {
+        global: true,
+        icons: ["heroicons"],
+        safelist: [], // Limitar clases generadas
+        prefix: "U", // Mejorar tree-shaking
+      },
+    ],
+    "@nuxtjs/tailwindcss",
+    "@nuxthub/core",
+  ],
   components: [
     {
       path: "~/components",
@@ -112,16 +117,17 @@ export default defineNuxtConfig({
       "/api/news": { swr: 1800 },
     },
     externals: {
-      inline: ["unenv/runtime", "stream", "mock-aws-s3", "@mapbox/node-pre-gyp", "aws-sdk", "sharp"],
+      inline: ["unenv/runtime", "stream", "sharp"],
+      external: ["chokidar", "@mapbox/node-pre-gyp", "aws-sdk"],
     },
     rollupConfig: {
-      external: ["unenv/runtime", "stream"],
+      external: ["unenv/runtime", "stream", "aws-sdk"],
       output: {
         generatedCode: {
           symbols: true,
-        }
-      }
-    }
+        },
+      },
+    },
   },
   // Añadir configuración de TypeScript
   typescript: {
@@ -129,10 +135,19 @@ export default defineNuxtConfig({
   },
   // Configuración adicional para Gemini
   build: {
-    transpile: ["@google/generative-ai", "cookie", "@prisma/client", "@mapbox/node-pre-gyp", "aws-sdk"],
+    transpile: [
+      "@google/generative-ai",
+      "cookie",
+      "@prisma/client",
+      "aws-sdk",
+      "mock-aws-s3",
+      "@mapbox/node-pre-gyp",
+    ],
   },
   alias: {
-    'string_decoder': 'string_decoder/',
-    '.prisma/client/index-browser': 'node_modules/.prisma/client/index-browser.js',
-  }
+    string_decoder: "string_decoder/",
+    ".prisma/client/index-browser":
+      "node_modules/.prisma/client/index-browser.js",
+    "chokidar/esm/index.js": "chokidar/index.js",
+  },
 });
